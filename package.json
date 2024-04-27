@@ -1,0 +1,40 @@
+{
+  "name": "package-version-bisect",
+  "version": "0.0.1",
+  "description": "A CLI tool for pinpointing which package version introduced a bug or regression in your project.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "package-version-bisect": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarinaChenot/package-version-bisect.git"
+  },
+  "keywords": [
+    "package",
+    "version",
+    "bisect",
+    "regression",
+    "bug"
+  ],
+  "author": "Carina Chenot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CarinaChenot/package-version-bisect/issues"
+  },
+  "homepage": "https://github.com/CarinaChenot/package-version-bisect#readme",
+  "dependencies": {
+    "@inquirer/prompts": "^5.0.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
