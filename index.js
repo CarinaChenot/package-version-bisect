@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 import * as child_process from 'node:child_process';
 import yargs from 'yargs';
-import { confirm } from '@inquirer/prompts';
+import confirm from '@inquirer/confirm';
 import semverSort from 'semver/functions/sort.js';
 
 /**
