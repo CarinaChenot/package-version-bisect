@@ -36,10 +36,10 @@ function isNotPreRelease(version) {
 /**
  * Installs a specific version of a package using npm
  * @param {string} version
+ * @param {string} installCommand - command to use when installing the package
  */
-function installVersion(version) {
-  // TODO: add option to use another package manager?
-  child_process.execSync(`npm install ${pkg}@${version}`);
+function installVersion(version, installCommand = 'npm install') {
+  child_process.execSync(`${installCommand} ${pkg}@${version}`);
 }
 
 function ask(version) {
@@ -48,7 +48,12 @@ function ask(version) {
   });
 }
 
-const { good, bad, package: pkg } = yargs(process.argv.slice(2)).parse();
+const {
+  good,
+  bad,
+  package: pkg,
+  install: installCommand,
+} = yargs(process.argv.slice(2)).parse();
 
 const versionsToCheck = getVersions(pkg, good, bad);
 
@@ -59,7 +64,7 @@ while (bisectStart !== bisectEnd) {
   const mid = Math.floor((bisectStart + bisectEnd) / 2);
   const midVersion = versionsToCheck[mid];
 
-  installVersion(midVersion);
+  installVersion(midVersion, installCommand);
 
   if (await ask(midVersion)) {
     bisectStart = mid + 1;

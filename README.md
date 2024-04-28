@@ -8,11 +8,18 @@ Package Version Bisect works by following a process similar to git bisect. Here'
 ```bash
 npx package-version-bisect --package <package-name> --good <good-version> --bad <bad-version>
 ```
-Where `<package-name>` is the name of the package you want to bisect, `<good-version>` is a known good version of the package, and `<bad-version>` is a known bad version of the package.
 
 From there you will be prompted to test different versions of the package and mark them as good or bad based on whether they exhibit the issue.
 
 <img alt="A screenshot of a terminal to illustrate the prompts when using package-version-bisect" src="https://github.com/CarinaChenot/package-version-bisect/assets/16705167/0f8ee0c0-c8cf-4c0b-9741-c7c8fd660a47" height=80 />
+
+## Reference
+| Parameter    | Description                                                                                            | Required | Example                 |
+|--------------|--------------------------------------------------------------------------------------------------------|----------|-------------------------|
+| `--package` | The name of the package                                                                                | Yes      | `--package my-package`  |
+| `--good`  | A known good version of the package                                                                    | Yes      | `--good 1.0.0`          |
+| `--bad`  | A known bad version of the package                                                                     | Yes      | `--bad 1.2.0`           |
+| `--install`  | Command to run instead of `npm install` (useful when using another package manager or devDependencies) | No       | `--install yarn add -D` |
 
 ## Future improvements
 
