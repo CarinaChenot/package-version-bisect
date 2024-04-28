@@ -12,11 +12,11 @@ Where `<package-name>` is the name of the package you want to bisect, `<good-ver
 
 From there you will be prompted to test different versions of the package and mark them as good or bad based on whether they exhibit the issue.
 
-<img src="https://github.com/CarinaChenot/package-version-bisect/assets/16705167/0f8ee0c0-c8cf-4c0b-9741-c7c8fd660a47" height=80 />
+<img alt="A screenshot of a terminal to illustrate the prompts when using package-version-bisect" src="https://github.com/CarinaChenot/package-version-bisect/assets/16705167/0f8ee0c0-c8cf-4c0b-9741-c7c8fd660a47" height=80 />
 
 ## Future improvements
 
-- Implement a more efficient search algorithm like git bisect
+- Improve algorithm by prioritizing testing major versions
 - Support for custom test commands for automated testing
 - Support for custom package managers (currently will always install with npm)
 - Support for private packages
