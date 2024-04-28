@@ -25,7 +25,7 @@ From there you will be prompted to test different versions of the package and ma
 
 - Improve algorithm by prioritizing testing major versions
 - Support for custom test commands for automated testing
-- Support for custom package managers (currently will always install with npm)
+- Automatically recognize package manager (npm, yarn, etc.) and devDependencies
 - Support for private packages
 - Add option to include pre-release versions like `3.0.2-rc.1` (currently only includes stable versions)
 
