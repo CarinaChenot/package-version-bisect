@@ -4,6 +4,10 @@ import yargs from 'yargs';
 import confirm from '@inquirer/confirm';
 import { findBadVersion } from './src/findBadVersion.js';
 import { getVersions } from './src/getVersions.js';
+import {
+  detectPackageManager,
+  packageManagerConfig,
+} from './src/detectPackageManager.js';
 
 /**
  * Installs a specific version of a package using npm
@@ -28,11 +32,18 @@ const {
   install: installCommand,
 } = yargs(process.argv.slice(2)).parse();
 
+const packageManager = detectPackageManager();
+
 const versionsToCheck = getVersions(pkg, good, bad);
 
 const culpritVersion = await findBadVersion(
   versionsToCheck,
-  (version) => installVersion(pkg, version, installCommand),
+  (version) =>
+    installVersion(
+      pkg,
+      version,
+      installCommand || packageManagerConfig[packageManager].installCommand,
+    ),
   ask,
 );
 
