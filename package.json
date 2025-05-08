@@ -1,6 +1,6 @@
 {
   "name": "package-version-bisect",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A CLI tool for pinpointing which package version introduced a bug or regression in your project.",
   "main": "index.js",
   "type": "module",
