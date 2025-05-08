@@ -3,6 +3,7 @@ import * as child_process from 'node:child_process';
 import yargs from 'yargs';
 import confirm from '@inquirer/confirm';
 import semverSort from 'semver/functions/sort.js';
+import { findBadVersion } from './src/findBadVersion.js';
 
 /**
  * Returns versions of a package between two versions
@@ -35,10 +36,11 @@ function isNotPreRelease(version) {
 
 /**
  * Installs a specific version of a package using npm
+ * @param {string} pkg
  * @param {string} version
  * @param {string} installCommand - command to use when installing the package
  */
-function installVersion(version, installCommand = 'npm install') {
+function installVersion(pkg, version, installCommand = 'npm install') {
   child_process.execSync(`${installCommand} ${pkg}@${version}`);
 }
 
@@ -57,22 +59,10 @@ const {
 
 const versionsToCheck = getVersions(pkg, good, bad);
 
-let bisectStart = 0;
-let bisectEnd = versionsToCheck.length - 1;
-
-while (bisectStart !== bisectEnd) {
-  const mid = Math.floor((bisectStart + bisectEnd) / 2);
-  const midVersion = versionsToCheck[mid];
-
-  installVersion(midVersion, installCommand);
-
-  if (await ask(midVersion)) {
-    bisectStart = mid + 1;
-  } else {
-    bisectEnd = mid;
-  }
-}
-
-const culpritVersion = versionsToCheck[bisectStart];
+const culpritVersion = await findBadVersion(
+  versionsToCheck,
+  (version) => installVersion(pkg, version, installCommand),
+  ask,
+);
 
 console.info('\x1b[1m%s\x1b[0m', culpritVersion, 'is the first bad version.');
