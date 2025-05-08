@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/CarinaChenot/package-version-bisect#readme",
   "dependencies": {
-    "@inquirer/confirm": "^3.2.0",
+    "@inquirer/confirm": "^5.1.9",
     "semver": "^7.7.1",
     "yargs": "^17.7.2"
   },
