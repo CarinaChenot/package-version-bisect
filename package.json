@@ -30,7 +30,7 @@
   "dependencies": {
     "@inquirer/confirm": "^5.1.9",
     "semver": "^7.7.1",
-    "yargs": "^17.7.2"
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "prettier": "^3.5.3"
